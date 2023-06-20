@@ -26,7 +26,7 @@ export const RegisterPage: React.FC = () => {
     formState: { errors },
   } = useForm<IRegisterVariables, HttpError, IRegisterVariables>({
     refineCoreProps: {
-      resource: "users",
+      resource: "users", // api http://localhost:8080/users
       redirect: false,
       onMutationError: (error) => {
         setError("api", error.response.data.errors);

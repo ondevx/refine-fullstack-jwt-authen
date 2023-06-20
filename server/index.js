@@ -28,10 +28,10 @@ app.get("/", (req, res) => {
 app.use("/api/v1/users", auth, userRouter);
 app.use("/api/v1/properties", propertyRouter);
 
-app.post("/register", async (req, res) => {
+app.post("/users", async (req, res) => {
     try {
       // Get user input
-      const { username, password, email } = req.body;
+      const { username, password, email } = req.body.user;
   
       // Validate user input
       if (!(email && password && username)) {
@@ -68,13 +68,13 @@ app.post("/register", async (req, res) => {
       user.token = token;
   
       // return new user
-      res.status(201).json(user);
+      res.status(200).json(user);
     } catch (err) {
       console.log(err);
     }
   });
   
-app.post("/login", async (req, res) => {
+app.post("/users/login", async (req, res) => {
     try {
       // Get user input
       const { email, password } = req.body;
